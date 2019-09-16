@@ -20,7 +20,7 @@ Built using
  
  **NOTE**:
  ---------
- *INSTALL MONGO DB IN YOUR LOCAL*
+ *INSTALL MONGO DB IN YOUR LOCAL and create a collection "CommentDB".*
  
   To Set up this application local:
   -------------------------------------
