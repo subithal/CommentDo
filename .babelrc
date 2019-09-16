@@ -1,0 +1,20 @@
+{
+  "presets" : [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "chrome": "55"
+        }
+      }
+    ],
+    "@babel/preset-react",
+  ],
+  "plugins": [
+      "react-html-attrs",
+      "@babel/plugin-proposal-class-properties",
+      [
+        "babel-plugin-react-css-modules"
+      ]
+    ]
+}

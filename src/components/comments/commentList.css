@@ -1,0 +1,62 @@
+.textbox{
+    width: 50rem;
+    height: 15rem;
+    margin: 1rem 0rem 1rem 1rem;
+    background-color: white;
+    border: 1px solid #0ea0b9;
+    display: inline-flex;
+}
+
+#comment {
+    font-family: cursive;
+    font: 400;
+    margin-top: 1%;
+    border: .5px solid #33333359;
+    width: 40%;
+    display: flex;
+}
+
+.comment-text{
+    margin: 1%;
+    flex: 1;
+    font-weight: normal !important;
+}
+
+.reply-txt {
+    border: 1px solid #0ea0b9;
+    width: 20rem;
+    height: 7rem;
+    margin: 1rem 0rem 1rem 1rem;
+    background-color: white;
+}
+
+.comment-header{
+    margin: 1%;
+    color: grey;
+}
+
+.actions{
+    margin: 1%;
+}
+
+.btn:hover, .btn {
+    margin-right: 1%;
+    background-color: #0ea0b9;
+    color: white;
+}
+
+
+.newComment-btn:hover, .newComment-btn {
+    margin: 8em 0rem 0rem 2rem;
+    background-color: #0ea0b9;
+    color: white;
+}
+
+.save-btn {
+    margin-left:.5rem;
+    align-self: center
+}
+
+.edit-div{
+    display: inline-flex;
+}
