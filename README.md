@@ -25,10 +25,10 @@ Built using
   To Set up this application local:
   -------------------------------------
     1.clone the repository
-    2.Open command prombt and go to package.json directory
+    2.Open command prompt and go to package.json directory
     3.execute "npm install"
     4.execute "npm run build"
-    5.open another command prombt and go to the same directory
+    5.open another command prompt and go to the same directory
     6.execute "npm run start:server" 
     7.Open this URL http://localhost:8090 in your browser
     
