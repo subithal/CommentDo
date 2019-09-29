@@ -23,7 +23,7 @@ const CommentList = (props) => {
             }
             props.addComment(obj);
             setNewCommentText("");
-        }
+        }   
     }
 
     return (
@@ -36,7 +36,7 @@ const CommentList = (props) => {
             />
             <Button className="newComment-btn" onClick={()=>addNewComment()}>Add Comment</Button>
             {
-                props.comments.map((commentObj)=>{
+                props.comments.reverse().map((commentObj)=>{
                     const depth = depthCalculator(commentObj.full_slug);
                    return (<Comment user={props.user} depth={depth} key={commentObj._id} obj={commentObj} addNewReply={props.addComment}
                      deleteComment={props.deleteComment} updateComment={props.updateComment} />);

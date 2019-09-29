@@ -40,9 +40,7 @@ class App extends React.Component {
     };
     postRequest("/api/comment/add", obj).then((res) => {
       if (res.data) {
-        const currentDoc = cloneDeep(this.state.commentList);
-        currentDoc.unshift(res.data);
-        this.setComments(currentDoc);
+       this.getAllComments();
       }
     })
     .catch((err) => { throw err });
@@ -51,11 +49,7 @@ class App extends React.Component {
   deleteComment(obj) {
     postRequest("/api/comment/delete", obj).then((res) => {
       if (res.data.deletedCount >= 1) {
-        const currentDoc = cloneDeep(this.state.commentList);
-        pullAllWith(currentDoc, [obj], (each,comp)=> {
-          return startsWith(each.full_slug,comp.full_slug);
-        })
-        this.setComments(currentDoc);
+        this.getAllComments();
       }
     })
     .catch((err) => { throw err });
@@ -64,10 +58,7 @@ class App extends React.Component {
   updateComment(obj) {
     postRequest("/api/comment/edit", obj).then((res) => { 
       if(res.data){
-        const currentDoc = cloneDeep(this.state.commentList);
-        const position = currentDoc.findIndex((each)=> each._id == obj._id);
-        currentDoc[position] = res.data;
-        this.setComments(currentDoc);
+        this.getAllComments();
       }
      })
      .catch((err) => { throw err });
