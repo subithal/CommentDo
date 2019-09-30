@@ -1,6 +1,6 @@
 import React from 'react';
 import { getRequest, postRequest } from '../utils/';
-import { cloneDeep, pullAllWith,startsWith } from 'lodash';
+import { cloneDeep, pullAllWith, startsWith } from 'lodash';
 import CommentList from '../components/comments';
 
 class App extends React.Component {
@@ -27,10 +27,27 @@ class App extends React.Component {
   }
 
   getAllComments() {
-    return getRequest("/api/comment/getAll").then((res) => this.setComments(res.data));
+    return getRequest("/api/comment/getAll").then((res) => {
+      const comments = res.data;
+      let orderedComments = [];
+      comments.map((comment, index) => {
+        if (comment.parent_id == null)
+          return index
+      })
+        .filter(val => val != null && val != undefined)
+        .map((commentIndex, arrIndex, arr) => {
+          if (arrIndex == arr.length - 1)
+            orderedComments.unshift(...comments.slice(commentIndex))
+          else {
+            orderedComments.unshift(...comments.slice(commentIndex, arr[arrIndex + 1]));
+          }
+        });
+      this.setComments(orderedComments);
+    });
+
   }
 
-  
+
 
   addComment(data) {
     const obj = {
@@ -40,10 +57,10 @@ class App extends React.Component {
     };
     postRequest("/api/comment/add", obj).then((res) => {
       if (res.data) {
-       this.getAllComments();
+        this.getAllComments();
       }
     })
-    .catch((err) => { throw err });
+      .catch((err) => { throw err });
   }
 
   deleteComment(obj) {
@@ -52,16 +69,16 @@ class App extends React.Component {
         this.getAllComments();
       }
     })
-    .catch((err) => { throw err });
+      .catch((err) => { throw err });
   }
 
   updateComment(obj) {
-    postRequest("/api/comment/edit", obj).then((res) => { 
-      if(res.data){
+    postRequest("/api/comment/edit", obj).then((res) => {
+      if (res.data) {
         this.getAllComments();
       }
-     })
-     .catch((err) => { throw err });
+    })
+      .catch((err) => { throw err });
   }
 
   render() {
